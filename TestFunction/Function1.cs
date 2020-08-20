@@ -18,7 +18,7 @@ namespace TestFunction
     public static class Function1
     {
 
-        private const string connection_string = "Endpoint=sb://systems.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=g02W1R8Vwd435GKxEX3313qIU/xsYrjqHhySs/HhYf0=";
+        private const string connection_string = "<connection_string>";
         private const string topic_name = "poc_topic";
         private static ITopicClient topicClient;
 
