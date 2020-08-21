@@ -19,7 +19,11 @@ namespace TestFunction
     public static class Function1
     {
 
+<<<<<<< HEAD
         private static string connection_string = Environment.GetEnvironmentVariable("connectionString");
+=======
+        private const string connection_string = "<connection_string>";
+>>>>>>> 63eee6e741b7efa7483292a7128ba123e1d068f1
         private const string topic_name = "poc_topic";
         private static ITopicClient topicClient;
 
