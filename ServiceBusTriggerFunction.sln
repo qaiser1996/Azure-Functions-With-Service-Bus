@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusTriggerFunction", "ServiceBusTriggerFunction\ServiceBusTriggerFunction.csproj", "{012EC24E-D6BD-4F26-9E67-0DAD81D5BA7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusTriggerFunction", "ServiceBusTriggerFunction\ServiceBusTriggerFunction.csproj", "{012EC24E-D6BD-4F26-9E67-0DAD81D5BA7C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFunction", "TestFunction\TestFunction.csproj", "{C68834FC-EAFE-48CC-912E-491D6FF71BDB}"
 EndProject

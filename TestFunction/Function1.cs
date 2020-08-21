@@ -12,13 +12,14 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Azure.ServiceBus;
 using System.Text;
+using System.Collections.Generic;
 
 namespace TestFunction
 {
     public static class Function1
     {
 
-        private const string connection_string = "Endpoint=sb://systems.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=g02W1R8Vwd435GKxEX3313qIU/xsYrjqHhySs/HhYf0=";
+        private static string connection_string = Environment.GetEnvironmentVariable("connectionString");
         private const string topic_name = "poc_topic";
         private static ITopicClient topicClient;
 
@@ -28,11 +29,25 @@ namespace TestFunction
             ILogger log)
         {
 
+            Dictionary<string, string> headers_dict = new Dictionary<string, string>();
+
+            foreach (var item in req.Headers)
+            {
+                headers_dict.Add(item.Key, item.Value);
+            }
+
+
             string req_xml = await new StreamReader(req.Body).ReadToEndAsync();
+
+            HttpRequestModel httpRequestModel = new HttpRequestModel();
+            httpRequestModel.headers = headers_dict;
+            httpRequestModel.body = req_xml;
+
+            string final_json = JsonConvert.SerializeObject(httpRequestModel, Formatting.Indented);
 
             topicClient = new TopicClient(connection_string, topic_name);
 
-            Message m = new Message(Encoding.UTF8.GetBytes(req_xml));
+            Message m = new Message(Encoding.UTF8.GetBytes(final_json));
 
             await topicClient.SendAsync(m);
 
